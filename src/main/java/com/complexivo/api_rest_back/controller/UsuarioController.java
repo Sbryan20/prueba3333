@@ -91,9 +91,9 @@ public class UsuarioController {
 	
         
         @PostMapping("/consulta_empresa")
-	public Empresa consulta_empresa(@RequestBody long id) {
+	public Empresa consulta_empresa(@RequestBody Usuario id) {
                
-		Empresa empresa = empresaService.getfindByUser(id);
+		Empresa empresa = empresaService.getfindByUser(id.getUsu_id());
                
 		if (empresa == null) {
 			return null;
