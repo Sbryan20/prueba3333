@@ -76,19 +76,29 @@ public class UsuarioController {
 			return 1;
 		}
 	}
+        
+        @PostMapping("/loginweb")
+	public Usuario loginweb(@RequestBody Usuario userRequest) {
+		Usuario usuario = usuarioService.getfindByUser(userRequest.getUsuusuario(), userRequest.getUsu_contrasena());
+		if (usuario == null) {
+			return null;
+		} else {
+			return usuario;
+		}
+	}
 
 
 	
         
-        @PostMapping("/login_web")
-	public Empresa login_web(@RequestBody Usuario userRequest) {
+        @PostMapping("/consulta_empresa")
+	public Empresa consulta_empresa(@RequestBody long id) {
                
-		Usuario usuario = usuarioService.getfindByUser(userRequest.getUsuusuario(), userRequest.getUsu_contrasena());
+		Empresa empresa = empresaService.getfindByUser(id);
                
-		if (usuario == null) {
+		if (empresa == null) {
 			return null;
 		} else {
-                        Empresa empresa = empresaService.getfindByUser(usuario.getUsu_id());
+                        
                     
 			return empresa;
 		}
