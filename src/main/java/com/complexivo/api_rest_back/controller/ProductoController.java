@@ -91,7 +91,7 @@ public class ProductoController {
     }
     
     @GetMapping("/listar/productosventa/{idempresa}")
-    public ResponseEntity<List<List>> getProductos(@PathVariable Long idempresa) {
+    public ResponseEntity<List<Object>> getProductos(@PathVariable Long idempresa) {
         return new ResponseEntity<>(prodcutoService.getProductos(idempresa), HttpStatus.OK);
     }
     

@@ -23,11 +23,11 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     @Query(value = "select p.idproducto, p.nombre, p.precio, p.stock, p.num_lote, p.fecha_vencimiento, p.descripcion, p.imagen,p.idempresa, p.catproid, p.subcatproid from railway.producto p inner join railway.subcategoriaproducto c on p.subcatproid = c.subcatproid where c.subcatproid = :id",nativeQuery=true)
     public List<Producto> findBySubcatproid(long id);
     
-    @Query(value = "select e.empnombre as id, p.nombre as nombre, sum(c.cantidad) as cantidad, (p.precio*sum(c.cantidad)) as precio \n" +
+    @Query(value = "select e.idempresa as 'idempresa', e.empnombre as 'nombre', p.nombre, sum(c.cantidad) as 'cantidad', (p.precio*sum(c.cantidad)) as 'venta' \n" +
                     "from empresa e inner join producto p on e.idempresa = p.idempresa inner join detalle c on p.idproducto = c.idproducto \n" +
                     "where e.idempresa = :idempresa \n" +
                     "group by p.idproducto order by sum(c.cantidad) desc",nativeQuery=true)
-    public List<List> obtenerIdempresaNombreCantidadPrecioByIdempresa(Long idempresa);
+    public List<Object> obtenerIdempresaNombreCantidadPrecioByIdempresa(Long idempresa);
     
     @Query(value = "select p.idproducto, p.nombre, p.precio, p.stock, p.num_lote, p.fecha_vencimiento, p.descripcion, p.imagen,p.idempresa, p.catproid, p.subcatproid from railway.producto p inner join railway.empresa c on p.idempresa = c.idempresa where c.idempresa = :id",nativeQuery=true)
     public List<Producto> findByIdempresa(long id);

@@ -88,7 +88,7 @@ public class ProductoServiceImpl implements ProductoService{
     }
     
       @Override
-    public List<List> getProductos(Long idempresa) {
+    public List<Object> getProductos(Long idempresa) {
         return productoRepository.obtenerIdempresaNombreCantidadPrecioByIdempresa(idempresa);
     }
     

@@ -23,7 +23,7 @@ public interface ProductoService {
     
     public List<Producto> getAllSubcategorias(long id);
     
-    public List<List> getProductos(Long idempresa);
+    public List<Object> getProductos(Long idempresa);
     
     public List<Producto> getIdempresa(long id);
 }
