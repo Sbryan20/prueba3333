@@ -30,7 +30,7 @@ public class SubCategoriaProductoServiceImpl implements SubCategoriaProductoServ
     @Override
     @Transactional(readOnly = true)
     public List<SubCategoriaProducto> getAllSubCategoriaProducto() {
-        return subcategoriaProductoRepository.findAll();
+        return subcategoriaProductoRepository.findByListar();
     }
 
     @Override
@@ -49,6 +49,7 @@ public class SubCategoriaProductoServiceImpl implements SubCategoriaProductoServ
         
         scp.setSubcatpronombre(subcategoriaproducto.getSubcatpronombre());
         scp.setSubcatprodescripcion(subcategoriaproducto.getSubcatprodescripcion());
+        scp.setCatproid(subcategoriaproducto.getCatproid());
 
         return subcategoriaProductoRepository.save(scp);
     }

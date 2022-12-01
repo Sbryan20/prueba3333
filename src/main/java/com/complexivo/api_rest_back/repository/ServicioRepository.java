@@ -36,4 +36,7 @@ public interface ServicioRepository extends JpaRepository<Servicio, Long> {
                     "group by s.idservicio\n" +
                     "order by count(c.idservicio) desc;",nativeQuery=true)
     public List<Object> obtenerIdempresaNombreCantidadPrecioByIdempresa(Long idempresa);
+    
+    @Query(value = "select * from railway.servicio where idservicio > 1 ",nativeQuery=true)
+    public List<Servicio> findByListar();
 }

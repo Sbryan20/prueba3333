@@ -23,4 +23,7 @@ public interface Subcategoria_ServicioRepository extends JpaRepository<Subcatego
     
     @Query(value = "select s.idsubcat, s.subcatnombre, s.subcatdetalle, s.idcatser from railway.subcategoria_servicio s inner join railway.categoria_servicio c on s.idcatser = c.idcatser where c.idcatser = :id",nativeQuery=true)
     public List<Subcategoria_Servicio> findByidcatser(long id);
+    
+    @Query(value = "select * from railway.subcategoria_servicio where idsubcat > 1 ",nativeQuery=true)
+    public List<Subcategoria_Servicio> findByListar();
 }

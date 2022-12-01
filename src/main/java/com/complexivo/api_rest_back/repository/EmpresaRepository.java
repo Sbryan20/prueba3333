@@ -40,4 +40,7 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
                     "group by e.idempresa\n" +
                     "order by sum(c.precio) desc;",nativeQuery=true)
     public List<Object> obtenerReporteFechaByIdempresa(Long idempresa, int mes, int año);
+    
+    @Query(value = "select * from railway.empresa where idempresa > 1 ",nativeQuery=true)
+    public List<Empresa> findByListar();
 }

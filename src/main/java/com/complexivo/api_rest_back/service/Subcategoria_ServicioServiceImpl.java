@@ -35,7 +35,7 @@ public class Subcategoria_ServicioServiceImpl implements Subategoria_ServicioSer
 
     @Override
     public List<Subcategoria_Servicio> getAllSubcategoria() {
-        return repository.findAll();
+        return repository.findByListar();
     }
 
     @Override
@@ -60,6 +60,7 @@ public class Subcategoria_ServicioServiceImpl implements Subategoria_ServicioSer
 
         c.setSubcatnombre(subcategoria_Servicio.getSubcatnombre());
         c.setSubcatdetalle(subcategoria_Servicio.getSubcatdetalle());
+        c.setIdcatser(subcategoria_Servicio.getIdcatser());
         
         return repository.save(c);
     }

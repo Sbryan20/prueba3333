@@ -31,4 +31,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     
     @Query(value = "select p.idproducto, p.nombre, p.precio, p.stock, p.num_lote, p.fecha_vencimiento, p.descripcion, p.imagen,p.idempresa, p.catproid, p.subcatproid from railway.producto p inner join railway.empresa c on p.idempresa = c.idempresa where c.idempresa = :id",nativeQuery=true)
     public List<Producto> findByIdempresa(long id);
+    
+    @Query(value = "select * from railway.producto where idproducto > 1 ",nativeQuery=true)
+    public List<Producto> findByListar();
 }
