@@ -84,7 +84,7 @@ public class Empresa {
     @Size(min = 2, max = 70, message = "La ciudad debe tener mas de 2 caracteres")
     private String empciudad;
     
-    @Max(value = 10000, message = "Número máximo de ingreso anual: 10000")
+    @Max(value = 100000, message = "Número máximo de ingreso anual: 10000")
     @Min(value = 10, message = "Número mínimo de ingreso anual: 10")
     private int empingresoanual;
      
