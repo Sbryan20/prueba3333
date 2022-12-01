@@ -69,6 +69,7 @@ public class Cat_sub_empServiceImpl implements Cat_sub_empService {
         e.setIddetalle(cat_sub_emp.getIddetalle());
         e.setIdempresa(cat_sub_emp.getIdempresa());
         e.setCsedetalle(cat_sub_emp.getCsedetalle());
+        e.setIdsubcatemp(cat_sub_emp.getIdsubcatemp());
    
         return repository.save(e);
     }
