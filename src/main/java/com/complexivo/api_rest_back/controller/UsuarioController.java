@@ -97,9 +97,8 @@ public class UsuarioController {
 		Empresa empresa = empresaService.getfindByUser(id);
 		Empresa empre=new Empresa();
                
-		if (empresa == null) {
-			return ResponseEntity.badRequest().body(
-					Collections.singletonMap("messeger", null));
+		if (empresa == null) {                    
+			return  ResponseEntity.notFound().build();
 		} else {
                         
                     
