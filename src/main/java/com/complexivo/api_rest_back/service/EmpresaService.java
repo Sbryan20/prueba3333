@@ -29,4 +29,6 @@ public interface EmpresaService {
     Empresa getfindByUser(long usu_id);
     
     public List<Object> getRanking();
+    
+    public List<Object> getFechaEmpresa(Long idempresa, int mes, int año);
 }

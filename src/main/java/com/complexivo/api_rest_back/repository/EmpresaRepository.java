@@ -33,4 +33,11 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
                     "group by e.idempresa\n" +
                     "order by sum(c.precio) desc;",nativeQuery=true)
     public List<Object> obtenerRankingByIdempresa();
+    
+    @Query(value = "select e.idempresa as 'idempresa',e.empruc as 'ruc', e.empnombre as 'empresa', month(f.fecha_factura) AS 'mes', year(f.fecha_factura) AS 'año',sum(c.precio) as 'venta'\n" +
+                    "from empresa e inner join producto p on e.idempresa = p.idempresa inner join detalle c on p.idproducto = c.idproducto inner join factura f on c.idfactura = f.idfactura\n" +
+                    "where MONTH(fecha_factura) = :mes and YEAR(fecha_factura)=:año and e.idempresa = :idempresa\n" +
+                    "group by e.idempresa\n" +
+                    "order by sum(c.precio) desc;",nativeQuery=true)
+    public List<Object> obtenerReporteFechaByIdempresa(Long idempresa, int mes, int año);
 }

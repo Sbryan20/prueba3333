@@ -107,4 +107,9 @@ public class EmpresaServiceImpl implements EmpresaService {
     public List<Object> getRanking() {
         return empresaRepository.obtenerRankingByIdempresa();
     }
+    
+    @Override
+    public List<Object> getFechaEmpresa(Long idempresa, int mes, int año) {
+        return empresaRepository.obtenerReporteFechaByIdempresa(idempresa,mes,año);
+    }
 }

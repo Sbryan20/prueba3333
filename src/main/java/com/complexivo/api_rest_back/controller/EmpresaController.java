@@ -84,4 +84,9 @@ public class EmpresaController {
     public ResponseEntity<List<Object>> getRanking() {
         return new ResponseEntity<>(empresaService.getRanking(), HttpStatus.OK);
     }
+    
+    @GetMapping("/listar/FechaVenta/{idempresa}")
+    public ResponseEntity<List<Object>> getRanking(Long idempresa, int mes, int año) {
+        return new ResponseEntity<>(empresaService.getFechaEmpresa(idempresa,mes,año), HttpStatus.OK);
+    }
 }
