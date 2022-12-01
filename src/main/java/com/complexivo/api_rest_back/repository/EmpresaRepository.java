@@ -27,4 +27,10 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
     
     @Query(value = "Select * from railway.empresa u where u.usu_id = :usu_id",nativeQuery=true)
     public Empresa findByUser(long usu_id);
+    
+    @Query(value = "select e.idempresa as 'idempresa', e.empruc as 'ruc', e.empnombre as 'empresa', sum(c.precio) as 'venta' \n" +
+                    "from empresa e inner join producto p on e.idempresa = p.idempresa inner join detalle c on p.idproducto = c.idproducto \n" +
+                    "group by e.idempresa\n" +
+                    "order by sum(c.precio) desc;",nativeQuery=true)
+    public List<Object> obtenerRankingByIdempresa();
 }

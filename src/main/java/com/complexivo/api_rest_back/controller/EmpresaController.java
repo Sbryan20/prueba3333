@@ -79,4 +79,9 @@ public class EmpresaController {
         empresaService.deleteEmpresa(idempresa);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    
+    @GetMapping("/listar/ranking/{idempresa}")
+    public ResponseEntity<List<Object>> getRanking() {
+        return new ResponseEntity<>(empresaService.getRanking(), HttpStatus.OK);
+    }
 }

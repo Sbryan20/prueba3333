@@ -27,4 +27,6 @@ public interface EmpresaService {
     public List<Empresa> getAllReporte(long id);
     
     Empresa getfindByUser(long usu_id);
+    
+    public List<Object> getRanking();
 }

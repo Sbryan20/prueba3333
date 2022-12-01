@@ -103,5 +103,8 @@ public class EmpresaServiceImpl implements EmpresaService {
        return empresaRepository.findByUser(usu_id); 
     }
   
-
+    @Override
+    public List<Object> getRanking() {
+        return empresaRepository.obtenerRankingByIdempresa();
+    }
 }
