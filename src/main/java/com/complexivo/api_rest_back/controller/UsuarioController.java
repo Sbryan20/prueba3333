@@ -90,17 +90,18 @@ public class UsuarioController {
 
 	
         
-        @PostMapping("/consulta_empresa")
-	public Empresa consulta_empresa(@RequestBody Usuario id) {
+        @GetMapping("/consulta_empresa/{id}")
+	public ResponseEntity<Empresa> consulta_empresa(@PathVariable long id) {
                
-		Empresa empresa = empresaService.getfindByUser(id.getUsu_id());
+		Empresa empresa = empresaService.getfindByUser(id);
+		Empresa empre=new Empresa();
                
 		if (empresa == null) {
 			return null;
 		} else {
                         
                     
-			return empresa;
+			return ResponseEntity.ok(empresa);
 		}
 	}
         

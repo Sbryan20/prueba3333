@@ -22,7 +22,7 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
     public Boolean existsByEmpruc(String empruc);
     
     
-    @Query(value = "select e.empnombre, p.nombre, sum(c.cantidad), sum(c.precio) from railway.empresa e inner join railway.producto p on e.idempresa = p.idempresa inner join railway.detalle c on p.idproducto = c.idproducto where p.idempresa = :id",nativeQuery=true)
+    @Query(value = "select e.empnombre, p.nombre, sum(c.cantidad) AS Total de cantidad, (p.precio*sum(c.cantidad)) as Total de venta from railway.empresa e inner join railway.producto p on e.idempresa = p.idempresa inner join railway.detalle c on p.idproducto = c.idproducto where p.idempresa =:id group by p.idproducto order by sum(c.cantidad) desc",nativeQuery=true)
     public List<Empresa> findByidpro(long id);
     
     @Query(value = "Select * from railway.empresa u where u.usu_id = :usu_id",nativeQuery=true)
