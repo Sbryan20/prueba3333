@@ -100,6 +100,11 @@ public class ServicioServiceImpl implements ServicioService{
         return Repository.findByIdempresa(id);
     }
     
+    @Override
+    public List<Object> getServicios(Long idempresa) {
+        return Repository.obtenerIdempresaNombreCantidadPrecioByIdempresa(idempresa);
+    }
+    
 
     
 }

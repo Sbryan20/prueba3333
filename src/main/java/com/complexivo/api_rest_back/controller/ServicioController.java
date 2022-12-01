@@ -98,4 +98,9 @@ public class ServicioController {
 
         return new ResponseEntity<>(Service.getIdempresa(idempresa), HttpStatus.OK);
     }
+    
+    @GetMapping("/listar/servicios/{idempresa}")
+    public ResponseEntity<List<Object>> getServicios(@PathVariable Long idempresa) {
+        return new ResponseEntity<>(Service.getServicios(idempresa), HttpStatus.OK);
+    }
 }

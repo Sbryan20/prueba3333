@@ -29,4 +29,6 @@ public interface ServicioService {
     public List<Servicio> getAllSubcategorias(long id);
     
     public List<Servicio> getIdempresa(long id);
+    
+    public List<Object> getServicios(Long idempresa);
 }
