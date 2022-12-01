@@ -6,6 +6,7 @@ import com.complexivo.api_rest_back.modelo.Usuario;
 import com.complexivo.api_rest_back.service.EmpresaService;
 
 
+import java.util.Collections;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,13 +92,14 @@ public class UsuarioController {
 	
         
         @GetMapping("/consulta_empresa/{id}")
-	public ResponseEntity<Empresa> consulta_empresa(@PathVariable long id) {
+	public ResponseEntity<?> consulta_empresa(@PathVariable long id) {
                
 		Empresa empresa = empresaService.getfindByUser(id);
 		Empresa empre=new Empresa();
                
 		if (empresa == null) {
-			return null;
+			return ResponseEntity.badRequest().body(
+					Collections.singletonMap("messeger", null));
 		} else {
                         
                     
