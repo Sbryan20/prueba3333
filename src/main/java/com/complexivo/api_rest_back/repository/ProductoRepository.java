@@ -24,7 +24,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     public List<Producto> findBySubcatproid(long id);
     
     @Query(value = "select e.idempresa as 'idempresa', e.empnombre as 'empresa', p.nombre as 'producto', sum(c.cantidad) as 'cantidad', (p.precio*sum(c.cantidad)) as 'venta' \n" +
-                    "from empresa e inner join producto p on e.idempresa = p.idempresa inner join detalle c on p.idproducto = c.idproducto \n" +
+                    "from railway.empresa e inner join railway.producto p on e.idempresa = p.idempresa inner join railway.detalle c on p.idproducto = c.idproducto \n" +
                     "where e.idempresa = :idempresa \n" +
                     "group by p.idproducto order by sum(c.cantidad) desc",nativeQuery=true)
     public List<Object> obtenerIdempresaNombreCantidadPrecioByIdempresa(Long idempresa);

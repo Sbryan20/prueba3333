@@ -31,7 +31,7 @@ public interface ServicioRepository extends JpaRepository<Servicio, Long> {
     public List<Servicio> findByIdempresa(long id);
     
     @Query(value = "select e.idempresa as 'idempresa',e.empnombre as 'empresa', s.sernombre as 'servicio', count(c.idservicio) as 'cantidad', ((s.serprecio)*count(c.idservicio)) as 'venta' \n" +
-                    "from empresa e inner join servicio s on e.idempresa = s.idempresa inner join detalle c on s.idservicio = c.idservicio \n" +
+                    "from railway.empresa e inner join railway.servicio s on e.idempresa = s.idempresa inner join railway.detalle c on s.idservicio = c.idservicio \n" +
                     "where s.idempresa = :idempresa \n" +
                     "group by s.idservicio\n" +
                     "order by count(c.idservicio) desc;",nativeQuery=true)

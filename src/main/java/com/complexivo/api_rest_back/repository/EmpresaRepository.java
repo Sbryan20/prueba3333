@@ -29,13 +29,13 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
     public Empresa findByUser(long usu_id);
     
     @Query(value = "select e.idempresa as 'idempresa', e.empruc as 'ruc', e.empnombre as 'empresa', sum(c.precio) as 'venta' \n" +
-                    "from empresa e inner join producto p on e.idempresa = p.idempresa inner join detalle c on p.idproducto = c.idproducto \n" +
+                    "from railway.empresa e inner join railway.producto p on e.idempresa = p.idempresa inner join railway.detalle c on p.idproducto = c.idproducto \n" +
                     "group by e.idempresa\n" +
                     "order by sum(c.precio) desc;",nativeQuery=true)
     public List<Object> obtenerRankingByIdempresa();
     
     @Query(value = "select e.idempresa as 'idempresa',e.empruc as 'ruc', e.empnombre as 'empresa', month(f.fecha_factura) AS 'mes', year(f.fecha_factura) AS 'año',sum(c.precio) as 'venta'\n" +
-                    "from empresa e inner join producto p on e.idempresa = p.idempresa inner join detalle c on p.idproducto = c.idproducto inner join factura f on c.idfactura = f.idfactura\n" +
+                    "from railway.empresa e inner join railway.producto p on e.idempresa = p.idempresa inner join railway.detalle c on p.idproducto = c.idproducto inner join railway.factura f on c.idfactura = f.idfactura\n" +
                     "where MONTH(fecha_factura) = :mes and YEAR(fecha_factura)=:año and e.idempresa = :idempresa\n" +
                     "group by e.idempresa\n" +
                     "order by sum(c.precio) desc;",nativeQuery=true)
